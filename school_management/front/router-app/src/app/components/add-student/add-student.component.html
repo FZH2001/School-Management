@@ -1,0 +1,57 @@
+
+
+<form class="p-5 mx-60"   (ngSubmit)="addStudent()"
+method="post"
+[formGroup]="studentForm">
+
+    <div class="relative z-0 w-full mb-6 group">
+        <input type="text" name="first_name"
+        formControlName="firstName"
+        id="first_name" 
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="first_name" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
+        <div *ngIf="studentForm.controls['firstName'].invalid && (studentForm.controls['firstName'].dirty || studentForm.controls['firstName'].touched)" class="text-red-500 text-xs mt-1">
+          <div *ngIf="studentForm.hasError('required', ['firstName'])">First name is required.</div>
+        </div>
+    </div>
+    <div class="relative z-0 w-full mb-6 group">
+        <input type="text" name="last_name" 
+        formControlName="lastName"
+        id="last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="last_name" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
+        <div *ngIf="studentForm.controls['lastName'].invalid && (studentForm.controls['lastName'].dirty || studentForm.controls['lastName'].touched)" class="text-red-500 text-xs mt-1">
+          <div *ngIf="studentForm.hasError('required', ['lastName'])">Last name is required.</div>
+        </div>
+      </div>
+    <div class="relative z-0 w-full mb-6 group">
+      <input type="email" name="email" id="email"
+      formControlName="email"
+      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+      <div *ngIf="studentForm.controls['email'].invalid && (studentForm.controls['email'].dirty || studentForm.controls['email'].touched)" class="text-red-500 text-xs mt-1">
+        <div *ngIf="studentForm.hasError('required', ['email'])">Email is required.</div>
+        <div *ngIf="studentForm.hasError('pattern', ['email'])">Invalid email format.</div>
+      </div>
+  </div>
+    <div class="relative z-0 w-full mb-6 group">
+        <input type="tel" pattern="[0-9]{10}"
+        formControlName="phone"
+        name="phone" id="phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+         placeholder=""
+         required />
+        <label for="phone" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number</label>
+        <div *ngIf="studentForm.controls['phone'].invalid && (studentForm.controls['phone'].dirty || studentForm.controls['phone'].touched)" class="text-red-500 text-xs mt-1">
+          <div *ngIf="studentForm.hasError('required', ['phone'])">Phone is required.</div>
+          <div *ngIf="studentForm.hasError('pattern', ['phone'])">Invalid phone format.</div>
+        </div>
+      </div>
+
+
+  <button type="submit" 
+  [disabled]="!studentForm.valid"
+  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+  [ngClass]="{'disabled-button': !studentForm.valid}"
+
+  (click)="addStudent()"
+  >Submit</button>
+</form>

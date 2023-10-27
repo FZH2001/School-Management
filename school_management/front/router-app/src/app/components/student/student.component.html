@@ -1,0 +1,51 @@
+<section class="bg-gray-50">
+    <div class="flex flex-col items-center justify-center m-4 lg:py-0">
+        <a href="#" class="flex items-center mb-4 text-xl font-semibold text-gray-900">
+            <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
+            Student Manager
+          </a>
+          
+      <div class="w-full bg-white rounded-lg shadow sm:max-w-md p-0">
+        <div class="p-4 space-y-2">
+          <h1 class="text-lg font-bold leading-tight text-gray-900 mb-4">Enter your cne</h1>
+          <form class="space-y-2"
+          [formGroup]="myForm" action="#">
+            <div class="mb-2">
+              <label for="cne" class="block text-sm font-medium mb-2 text-gray-900">cne</label>
+              <input
+                type="text"
+                name="cne"
+                id="cne"
+                [(ngModel)]="studentCNE"
+
+                formControlName="cne"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 w-full p-2"
+                placeholder="g12345678"
+                required
+              />
+            </div>
+            <div *ngIf="myForm.controls['cne'].invalid && (myForm.controls['cne'].dirty || myForm.controls['cne'].touched)" class="text-red-500 text-xs mt-1">
+
+            <div *ngIf="myForm.hasError('required', ['cne'])" class="text-red-500 text-xs mt-1">
+              CNE is required.
+            </div>
+          </div>
+
+            <button
+            [routerLink]="['./view', getId(studentCNE)]"
+            [disabled]="!myForm.valid"
+
+            class="w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-3 py-2"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <router-outlet></router-outlet>
+  
+
+
+

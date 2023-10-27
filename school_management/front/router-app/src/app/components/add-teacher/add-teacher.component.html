@@ -1,0 +1,41 @@
+<form
+  class="relative overflow-x-auto sm:rounded-lg mt-10 mx-60"
+  (ngSubmit)="addTeacher()"
+  method="post"
+  [formGroup]="teacherForm"
+>
+  <div class="mb-4">
+    <label for="first_name" class="block text-gray-700 font-bold mb-2"
+      >First Name:</label
+    >
+    <input
+      type="text"
+      name="first_name"
+      id="first_name"
+      formControlName="firstName"
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      required
+    />
+  </div>
+  <div class="mb-4">
+    <label for="last_name" class="block text-gray-700 font-bold mb-2"
+      >Last Name:</label
+    >
+    <input
+      type="text"
+      name="last_name"
+      formControlName="lastName"
+      id="last_name"
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      required
+    />
+  </div>
+  <div class="flex items-center justify-center">
+    <button
+      type="submit"
+      class="bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
+    >
+      Add
+    </button>
+  </div>
+</form>
